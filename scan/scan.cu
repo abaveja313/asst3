@@ -193,25 +193,6 @@ __global__ void populateRepeats(int *device_input, int *device_output, int lengt
     }
 }
 
-void printDeviceArray(int* deviceArray, int length){
-    int* hostArray = (int*)malloc(length * sizeof(int));  // Allocate memory on the host
-    if (hostArray == nullptr) {
-        fprintf(stderr, "Failed to allocate host memory\n");
-        return;
-    }
-
-    cudaMemcpy(hostArray, deviceArray, length * sizeof(int), cudaMemcpyDeviceToHost);
-
-    printf("[ ");
-    for (int i = 0; i < length; i++){
-        printf("%d", hostArray[i]);
-        printf(" ");
-    }
-    printf("]\n");
-
-    free(hostArray);  // Free allocated memory on the host
-}
-
 
 // find_repeats --
 //
